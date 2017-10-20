@@ -1,6 +1,6 @@
 exports.up = function(pgm) {
   pgm.createTable(
-    'users',
+    'photos',
     {
       id: 'id',
       email: {type: 'string', notNull: true },
@@ -9,10 +9,10 @@ exports.up = function(pgm) {
       updatedAt: {type: 'timestamp'}
     })
   pgm.sql(
-    'CREATE UNIQUE INDEX users_email_key ON users (lower(email));'
+    'CREATE UNIQUE INDEX users_email_key ON photos (lower(email));'
   )
 }
 
 exports.down = function(pgm) {
-  pgm.dropTable('users')
+  pgm.dropTable('photos')
 };

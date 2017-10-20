@@ -36,7 +36,7 @@ const localLogin = new LocalStrategy(localOptions, async(email, password, done) 
 // Set up options for JWT Strategy
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeader(),
-  secretOrKey: process.env.FBUZZ_JWT_SECRET
+  secretOrKey: process.env.EW_JWT_SECRET
 }
 
 // Create JWT Strategy

@@ -1,7 +1,7 @@
 {
-  "name": "fix.buzz.node",
+  "name": "Echowaves.node",
   "version": "0.0.1",
-  "description": "fix.buzz backend",
+  "description": "Echwoaves backend",
   "main": "server.js",
   "standard": {
     "parser": "babel-eslint"
@@ -10,18 +10,18 @@
     "start": "nodemon --ignore app --exec babel-node server.js --watch",
     "build": "webpack",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register ./test/*.js",
-    "migrate": "./node_modules/.bin/sequelize $@"    
+    "migrate": "./node_modules/.bin/sequelize $@"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:echowaves/fix.buzz.node.git"
+    "url": "git@github.com:echowaves/Echowaves.node.git"
   },
   "author": "Echowaves <dmitry@echowaves.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/echowaves/fix.buzz.node/issues"
+    "url": "https://github.com/echowaves/Echowaves.node/issues"
   },
-  "homepage": "https://github.com/echowaves/fix.buzz.node/wiki",
+  "homepage": "https://github.com/echowaves/Echowaves.node/wiki",
   "dependencies": {
     "axios": "^0.16.2",
     "babel-cli": "^6.24.1",

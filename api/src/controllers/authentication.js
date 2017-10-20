@@ -4,7 +4,7 @@ import jwt from 'jwt-simple'
 
 var tokenForUser = user => {
   const timestamp = new Date().getTime()
-  return jwt.encode({sub: user.email, iat: timestamp}, process.env.FBUZZ_JWT_SECRET)
+  return jwt.encode({sub: user.email, iat: timestamp}, process.env.EW_JWT_SECRET)
 }
 exports.signin = async ctx => {
   logger.debug("inside signin")

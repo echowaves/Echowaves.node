@@ -19,10 +19,6 @@ describe('/api/photos', () => {
       .set('Content-Type', 'application/json')
 
 
-    logger.debug("response.status: ", response.status)
-    logger.debug("response.body  : ", response.body)
-
-
     expect(response.status).to.equal(400)
     expect(response.body.error).to.equal('parameters missing')
 

@@ -1,6 +1,6 @@
 import Photo from '../models/photo'
 import logger from '../../../lib/logger'
-import * as moment from 'moment'
+import moment from 'moment'
 
 exports.addPhoto = async ctx => {
   const uuid = ctx.request.body.uuid
@@ -10,11 +10,16 @@ exports.addPhoto = async ctx => {
   var thumbNail = imageData
 
 
+  logger.debug("uuid:", uuid)
+  logger.debug("location:", location)
+  logger.debug("imageData:", imageData)
+
 
   const createdAt = moment()
 
 
-  if(!uuid || !location || !imageData) {
+  if(!uuid || !location || !imageData ) {
+    logger.debug("setting status to 400")
     ctx.response.status = 400
     ctx.body = { error: 'parameters missing'}
     return

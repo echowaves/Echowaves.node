@@ -10,7 +10,7 @@ const expect = require('chai').expect  // BDD/TDD assertion library
 
 const request = supertest.agent(app.listen())
 
-describe('/api health', () => {
+describe('/api', () => {
 
   it('should be able respond to a health check',  async ()  => {
     var response =
@@ -18,16 +18,10 @@ describe('/api health', () => {
       .get('/api')
       .set('Content-Type', 'application/json')
 
-
-    logger.debug("response: ", response.status)
-
     expect(response.status).to.equal(200)
     expect(response.body.message).to.equal('Hello Echowaves World')
 
 
   })
-
-
-
 
 })

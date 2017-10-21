@@ -25,7 +25,7 @@ var User = sequelize.define('user', {
 User.findByEmail = async email => {
   return await User.findOne({
     where: {
-      email: email
+      email:email
     }
   })
 }

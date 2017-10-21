@@ -20,7 +20,7 @@ import serve from 'koa-static'
 import dotenv from 'dotenv'
 dotenv.config()
 
-const app = module.exports = new Koa()
+export const app = module.exports = new Koa()
 
 // serve static files e.g. bundle.js
 // app.use(serve(path.join(__dirname, 'public')))

@@ -1,7 +1,7 @@
 import Router from 'koa-router'
 
 import indexController from '../src/controllers/index'
-import AuthenticationController from '../src/controllers/authentication'
+import PhotoController from '../src/controllers/photo'
 
 require('./passportStrategies')
 
@@ -16,9 +16,10 @@ module.exports = function (app) {
   app.use(passport.initialize())
 
   router
-    .get('/api',                            indexController.helloWorld)
-    .post('/api/signin', requireSignin,     AuthenticationController.signin)
-    .post('/api/signup',                    AuthenticationController.signup)
+    .get('/api',                               indexController.helloWorld) // just for testing purposes, can be used for health check
+    // .post('/api/signin', requireSignin,     AuthenticationController.signin)
+    // .post('/api/signup',                    AuthenticationController.signup)
+    .post('/api/photos',                       PhotoController.addPhoto)
 
   app.use(router.routes())
 }

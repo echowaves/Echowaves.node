@@ -2,6 +2,8 @@ process.env.NODE_ENV = 'test'
 
 import logger from '../../../lib/logger'
 import assert from 'assert'
+import uuid from 'uuid'
+import fs from 'fs'
 
 
 import app from '../../../server'
@@ -21,8 +23,28 @@ describe('/api/photos', () => {
 
     expect(response.status).to.equal(400)
     expect(response.body.error).to.equal('parameters missing')
-
-
   })
+
+
+  it.only('should be able to post a photo with right parameters',  async ()  => {
+
+    let guid = uuid()
+    var point = { type: 'Point', coordinates: [39.807222,-76.984722]};
+    var contents = fs.readFileSync('./api/tests/controllers/data/FooBuz.png')
+    logger.debug("contents.size: ", contents.length)
+
+    var response =
+    await request
+      .post('/api/photos')
+      .set('Content-Type', 'application/json')
+      .send({uuid: guid})
+      .send({location: point})
+      .send({imageData: contents})
+
+
+    expect(response.status).to.equal(201)
+    expect(response.body.status).to.equal('success')
+  })
+
 
 })

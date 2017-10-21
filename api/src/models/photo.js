@@ -22,6 +22,10 @@ var Photo = sequelize.define('Photo', {
     allowNull: false,
     type: Sequelize.DATE
   },
+  updatedAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  },
   thumbNail: {
     allowNull: false,
     type: Sequelize.BLOB

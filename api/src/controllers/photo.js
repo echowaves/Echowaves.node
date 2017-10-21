@@ -12,10 +12,11 @@ exports.addPhoto = async ctx => {
 
   logger.debug("uuid:", uuid)
   logger.debug("location:", location)
-  logger.debug("imageData:", imageData)
+  logger.debug("imageData.length:", imageData.data.length)
 
 
   const createdAt = moment()
+  const updatedAt = createdAt
 
 
   if(!uuid || !location || !imageData ) {
@@ -25,16 +26,16 @@ exports.addPhoto = async ctx => {
     return
   }
 
-
   // create and safe record
   let photo
   try {
     photo = await Photo.create({
       uuid,
       location,
-      createdAt,
       imageData,
-      thumbNail
+      thumbNail,
+      createdAt,
+      updatedAt
     })
   } catch(err) {
     logger.error("unable to create Photo", err)

@@ -16,10 +16,6 @@ module.exports = {
         type: Sequelize.GEOMETRY('POINT'),
         allowNull: false
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
       thumbNail: {
         allowNull: false,
         type: Sequelize.BLOB
@@ -27,6 +23,14 @@ module.exports = {
       imageData: {
         allowNull: false,
         type: Sequelize.BLOB
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     }
   )

@@ -45,4 +45,25 @@ describe('/api/photos', () => {
   })
 
 
+
+  it.only('should be able to query feed photos',  async ()  => {
+    var point = { type: 'Point', coordinates: [38.80,-77.98]};
+
+    var response =
+    await request
+      .get('/api/photos')
+      .set('Content-Type', 'application/json')
+      .send({location: point})
+
+    expect(response.status).to.equal(200)
+    expect(response.body.status).to.equal('success')
+  })
+
+
+  it('should be able to get one photo by id',  async ()  => {
+  })
+
+  it('should be able to delete a photo by id',  async ()  => {
+  })
+
 })

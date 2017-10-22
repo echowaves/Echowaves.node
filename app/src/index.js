@@ -17,9 +17,7 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
-        <Route path="/" component={App}/>
-        <Route path="/signin" component={SigninForm} />
-        <Route path="/feature"  />
+        Hello Echowaves
       </div>
     </BrowserRouter>
   </Provider>

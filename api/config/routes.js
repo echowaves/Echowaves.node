@@ -20,6 +20,7 @@ module.exports = function (app) {
     // .post('/api/signin', requireSignin,     AuthenticationController.signin)
     // .post('/api/signup',                    AuthenticationController.signup)
     .post('/api/photos',                       PhotoController.addPhoto)
+    .get ('/api/photos',                       PhotoController.getPhotoFeed)
 
   app.use(router.routes())
 }

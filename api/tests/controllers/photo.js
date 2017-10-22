@@ -44,6 +44,16 @@ describe('/api/photos', () => {
     expect(response.body.status).to.equal('success')
   })
 
+  it('should not be able to get a photo feed with no parameters',  async ()  => {
+    var response =
+    await request
+      .get('/api/photos')
+      .set('Content-Type', 'application/json')
+
+
+    expect(response.status).to.equal(400)
+    expect(response.body.error).to.equal('parameters missing')
+  })
 
 
   it.only('should be able to query feed photos',  async ()  => {
@@ -57,6 +67,9 @@ describe('/api/photos', () => {
 
     expect(response.status).to.equal(200)
     expect(response.body.status).to.equal('success')
+
+    logger.debug("photos: ", response.body.photos.length)
+    // logger.debug("photos: ", response.body.photos[0])
   })
 
 

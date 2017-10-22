@@ -35,7 +35,6 @@ var Photo = sequelize.define('Photo', {
     type: Sequelize.BLOB
   }
 
-
 });
 
 

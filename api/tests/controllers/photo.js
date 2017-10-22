@@ -65,6 +65,14 @@ describe('/api/photos', () => {
       .set('Content-Type', 'application/json')
       .send({location: point})
 
+    expect(response.body.photos.length).to.not.equal(0)
+    expect(response.body.photos[0]).to.have.property('id')
+    expect(response.body.photos[0]).to.have.property('uuid')
+    expect(response.body.photos[0]).to.have.property('location')
+    expect(response.body.photos[0]).to.have.property('thumbNail')
+    expect(response.body.photos[0]).to.not.have.property('imageData')
+    expect(response.body.photos[0]).to.have.property('createdAt')
+    expect(response.body.photos[0]).to.have.property('distance')
     expect(response.status).to.equal(200)
     expect(response.body.status).to.equal('success')
 

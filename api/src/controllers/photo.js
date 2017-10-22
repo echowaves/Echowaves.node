@@ -140,3 +140,29 @@ exports.addPhoto = async ctx => {
     ctx.response.status = 200
     ctx.body = { status: 'success', photo }
   }
+
+
+
+
+  exports.deletePhotoById = async ctx => {
+    const id = ctx.params.id
+
+    // retrieve photos
+    let photo
+    try {
+        photo = await Photo.destroy({
+          where: { id }
+        })
+
+    } catch(err) {
+      logger.error("Unable to delete a Photo", err)
+      ctx.response.status = 500
+      ctx.body = { error: 'Unable to delete a Photo'}
+      return
+    }
+
+
+    // Resond to request indicating the photo was created
+    ctx.response.status = 200
+    ctx.body = { status: 'success' }
+  }

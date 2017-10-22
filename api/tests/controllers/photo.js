@@ -91,8 +91,6 @@ describe('/api/photos', () => {
       }
     })
 
-    logger.debug("photo.id: ", photo.id)
-
 
     var response =
     await request
@@ -113,7 +111,25 @@ describe('/api/photos', () => {
 
   })
 
+
+
   it('should be able to delete a photo by id',  async ()  => {
+    var photo = await Photo.findOne({
+      attributes: {
+        exclude: ['imageData']
+      }
+    })
+
+
+    var response =
+    await request
+      .delete('/api/photos/' + photo.id )
+      .set('Content-Type', 'application/json')
+
+
+    expect(response.status).to.equal(200)
+    expect(response.body.status).to.equal('success')
+
   })
 
 })

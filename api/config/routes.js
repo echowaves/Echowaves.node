@@ -22,6 +22,7 @@ module.exports = function (app) {
     .post('/api/photos',                       PhotoController.addPhoto)
     .get ('/api/photos',                       PhotoController.getPhotoFeed)
     .get ('/api/photos/:id',                   PhotoController.getPhotoById)
+    .delete ('/api/photos/:id',                PhotoController.deletePhotoById)
 
   app.use(router.routes())
 }

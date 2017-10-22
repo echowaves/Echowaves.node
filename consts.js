@@ -2,7 +2,9 @@ import logger from './lib/logger'
 
 import Sequelize from 'sequelize'
 
-export var sequelize = new Sequelize(`${process.env.DATABASE_URL}`)
+export var sequelize = new Sequelize(`${process.env.DATABASE_URL}`, {
+  logging: false
+})
 
 sequelize
   .authenticate()

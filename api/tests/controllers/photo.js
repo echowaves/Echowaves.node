@@ -1,5 +1,3 @@
-process.env.NODE_ENV = 'test'
-
 import logger from '../../../lib/logger'
 import assert from 'assert'
 import uuid from 'uuid'
@@ -26,11 +24,12 @@ describe('/api/photos', () => {
   })
 
 
-  it.only('should be able to post a photo with right parameters',  async ()  => {
+  it('should be able to post a photo with right parameters',  async ()  => {
 
     let guid = uuid()
     var point = { type: 'Point', coordinates: [39.807222,-76.984722]};
-    var contents = fs.readFileSync('./api/tests/controllers/data/FooBuz.png')
+    var contents = [...fs.readFileSync('./api/tests/controllers/data/FooBuz.png')]
+
     logger.debug("contents.size: ", contents.length)
 
     var response =
@@ -40,7 +39,6 @@ describe('/api/photos', () => {
       .send({uuid: guid})
       .send({location: point})
       .send({imageData: contents})
-
 
     expect(response.status).to.equal(201)
     expect(response.body.status).to.equal('success')

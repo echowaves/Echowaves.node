@@ -1,23 +1,13 @@
 import Photo from '../models/photo'
 import logger from '../../../lib/logger'
 import moment from 'moment'
+import sharp from 'sharp'
+
 
 exports.addPhoto = async ctx => {
   const uuid = ctx.request.body.uuid
   const location = ctx.request.body.location
   const imageData = ctx.request.body.imageData
-
-  var thumbNail = imageData
-
-
-  logger.debug("uuid:", uuid)
-  logger.debug("location:", location)
-  logger.debug("imageData.length:", imageData.data.length)
-
-
-  const createdAt = moment()
-  const updatedAt = createdAt
-
 
   if(!uuid || !location || !imageData ) {
     logger.debug("setting status to 400")
@@ -25,6 +15,28 @@ exports.addPhoto = async ctx => {
     ctx.body = { error: 'parameters missing'}
     return
   }
+
+
+  logger.debug("ctx.request.body.imageData.length: ", imageData.length)
+
+  var thumbNail
+  try {
+    thumbNail = [...await sharp(new Buffer(imageData))
+   .resize(100, 100)
+   .toBuffer()] // conver to Buffer then babck to Array
+ } catch(err) {
+   logger.error(err)
+ }
+
+  logger.debug("uuid:", uuid)
+  logger.debug("location:", location)
+  logger.debug("imageData.length:", imageData.length)
+  logger.debug("thumbNail.length:", thumbNail.length)
+
+  const createdAt = moment()
+  const updatedAt = createdAt
+
+
 
   // create and safe record
   let photo
@@ -43,8 +55,6 @@ exports.addPhoto = async ctx => {
     ctx.body = { error: 'Unable to create a new Photo'}
     return
   }
-
-  logger.debug("new photo created: ", photo.id)
 
 
   // Resond to request indicating the photo was created

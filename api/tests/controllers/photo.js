@@ -73,6 +73,7 @@ describe('/api/photos', () => {
     expect(response.body.photos[0]).to.not.have.property('imageData')
     expect(response.body.photos[0]).to.have.property('createdAt')
     expect(response.body.photos[0]).to.have.property('distance')
+
     expect(response.status).to.equal(200)
     expect(response.body.status).to.equal('success')
 

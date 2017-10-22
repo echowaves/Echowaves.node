@@ -74,6 +74,15 @@ exports.addPhoto = async ctx => {
 
     logger.debug("location:",  location)
 
+    var limit = ctx.request.body.limit
+    var offset = ctx.request.body.offset
+    if(!limit) {
+      limit = 100
+    }
+    if(!offset) {
+      offset = 0
+    }
+
 
     const lat       = ctx.request.body.location.coordinates[0]
         , lng       = ctx.request.body.location.coordinates[1];
@@ -90,7 +99,9 @@ exports.addPhoto = async ctx => {
           include: [[Sequelize.fn('ST_Distance', point, Sequelize.col('location')), 'distance']],
           exclude: ['imageData']
         },
-        order: Sequelize.col('distance')
+        order: Sequelize.col('distance'),
+        limit,
+        offset
       })
 
     } catch(err) {

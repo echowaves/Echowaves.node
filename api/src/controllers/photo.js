@@ -17,7 +17,6 @@ exports.addPhoto = async ctx => {
     return
   }
 
-
   logger.debug("ctx.request.body.imageData.length: ", imageData.length)
 
   var thumbNail
@@ -85,7 +84,7 @@ exports.addPhoto = async ctx => {
 
 
     const lat       = ctx.request.body.location.coordinates[0]
-        , lng       = ctx.request.body.location.coordinates[1];
+    , lng       = ctx.request.body.location.coordinates[1];
 
     const point = Sequelize.fn('ST_MakePoint', lat, lng);
 
@@ -115,4 +114,29 @@ exports.addPhoto = async ctx => {
     // Resond to request indicating the photo was created
     ctx.response.status = 200
     ctx.body = { status: 'success', photos }
+  }
+
+
+
+  exports.getPhotoById = async ctx => {
+    const id = ctx.params.id
+
+    // retrieve photos
+    let photo
+    try {
+        photo = await Photo.findOne({
+          where: { id }
+        })
+
+    } catch(err) {
+      logger.error("Unable to retrieve a Photo", err)
+      ctx.response.status = 500
+      ctx.body = { error: 'Unable to retrieve a Photo'}
+      return
+    }
+
+
+    // Resond to request indicating the photo was created
+    ctx.response.status = 200
+    ctx.body = { status: 'success', photo }
   }

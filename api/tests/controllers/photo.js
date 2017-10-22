@@ -3,6 +3,8 @@ import assert from 'assert'
 import uuid from 'uuid'
 import fs from 'fs'
 
+import Photo from '../../src/models/photo'
+
 
 import app from '../../../server'
 import supertest from 'supertest' // SuperAgent-driven library for testing HTTP servers
@@ -56,14 +58,14 @@ describe('/api/photos', () => {
   })
 
 
-  it.only('should be able to query feed photos',  async ()  => {
-    var point = { type: 'Point', coordinates: [38.80,-77.98]};
+  it('should be able to query feed photos',  async ()  => {
+    var location = { type: 'Point', coordinates: [38.80,-77.98]};
 
     var response =
     await request
       .get('/api/photos')
       .set('Content-Type', 'application/json')
-      .send({location: point})
+      .send({location})
 
     expect(response.body.photos.length).to.not.equal(0)
     expect(response.body.photos[0]).to.have.property('id')
@@ -83,6 +85,32 @@ describe('/api/photos', () => {
 
 
   it('should be able to get one photo by id',  async ()  => {
+    var photo = await Photo.findOne({
+      attributes: {
+        exclude: ['imageData']
+      }
+    })
+
+    logger.debug("photo.id: ", photo.id)
+
+
+    var response =
+    await request
+      .get('/api/photos/' + photo.id )
+      .set('Content-Type', 'application/json')
+
+
+    expect(response.body.photo).to.have.property('id')
+    expect(response.body.photo).to.have.property('uuid')
+    expect(response.body.photo).to.have.property('location')
+    expect(response.body.photo).to.have.property('thumbNail')
+    expect(response.body.photo).to.have.property('imageData')
+    expect(response.body.photo).to.have.property('createdAt')
+    expect(response.body.photo).to.not.have.property('distance')
+
+    expect(response.status).to.equal(200)
+    expect(response.body.status).to.equal('success')
+
   })
 
   it('should be able to delete a photo by id',  async ()  => {

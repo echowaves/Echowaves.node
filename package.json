@@ -1,7 +1,7 @@
 {
-  "name": "Echowaves.node",
+  "name": "WiSaw.node",
   "version": "0.0.1",
-  "description": "Echwoaves backend",
+  "description": "What I Saw Today backend",
   "main": "server.js",
   "standard": {
     "parser": "babel-eslint"
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:echowaves/Echowaves.node.git"
+    "url": "git@github.com:echowaves/WiSaw.node.git"
   },
   "author": "Echowaves <dmitry@echowaves.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/echowaves/Echowaves.node/issues"
+    "url": "https://github.com/echowaves/WiSaw.node/issues"
   },
-  "homepage": "https://github.com/echowaves/Echowaves.node/wiki",
+  "homepage": "https://github.com/echowaves/WiSaw.node/wiki",
   "dependencies": {
     "axios": "^0.16.2",
     "babel-cli": "^6.24.1",

@@ -17,7 +17,7 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
-        Hello Echowaves
+        Hello WiSaw
       </div>
     </BrowserRouter>
   </Provider>

@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "nodemon --ignore app --exec babel-node server.js --watch",
+    "prod": "babel-node server.js",
     "build": "webpack",
     "test": "./node_modules/mocha/bin/mocha ./api/tests/*/*.js --compilers js:babel-core/register --timeout 15000 --require babel-polyfill --reporter spec || exit 0",
     "migrate": "./node_modules/.bin/sequelize $@"

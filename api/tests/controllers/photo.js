@@ -91,12 +91,10 @@ describe('/api/photos', () => {
       }
     })
 
-
     var response =
     await request
       .get('/api/photos/' + photo.id )
       .set('Content-Type', 'application/json')
-
 
     expect(response.body.photo).to.have.property('id')
     expect(response.body.photo).to.have.property('uuid')

@@ -112,6 +112,21 @@ describe('/api/photos', () => {
   })
 
 
+  it('should not be able to get non existing photo by id',  async ()  => {
+
+
+    var response =
+    await request
+      .get('/api/photos/' + 0)
+      .set('Content-Type', 'application/json')
+
+
+    expect(response.status).to.equal(404)
+    expect(response.body.error).to.equal('not found')
+
+  })
+
+
 
   it('should be able to delete a photo by id',  async ()  => {
     var photo = await Photo.findOne({

@@ -127,7 +127,6 @@ exports.addPhoto = async ctx => {
         photo = await Photo.findOne({
           where: { id }
         })
-
     } catch(err) {
       logger.error("Unable to retrieve a Photo", err)
       ctx.response.status = 500
@@ -135,6 +134,11 @@ exports.addPhoto = async ctx => {
       return
     }
 
+    if(!photo) {
+      ctx.response.status = 404
+      ctx.body = { error: 'not found' }
+      return
+    }
 
     // Resond to request indicating the photo was created
     ctx.response.status = 200

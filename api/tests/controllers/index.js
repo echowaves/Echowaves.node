@@ -19,7 +19,7 @@ describe('/api', () => {
       .set('Content-Type', 'application/json')
 
     expect(response.status).to.equal(200)
-    expect(response.body.message).to.equal('Hello WiSaw World')
+    expect(response.body.message).to.equal('Hello Wisaw World')
 
 
   })

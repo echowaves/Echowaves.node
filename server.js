@@ -68,9 +68,8 @@ app.use(convert(json()))
 app.use(convert(devLogger()))
 
 app.use(bodyParser({
-  jsonLimit: 1000//10000000
-  }
-}))
+    jsonLimit: 1000000000
+  }))
 
 require('./api/config/routes')(app)
 

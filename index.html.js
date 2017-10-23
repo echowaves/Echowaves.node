@@ -5,6 +5,8 @@ export default (title =>
   <!doctype html>
   <html>
     <head>
+      <base href="">
+
       <title>${title}</title>
       <link rel="stylesheet" href="/style/style.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">

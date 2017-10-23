@@ -16,7 +16,6 @@ exports.addPhoto = async ctx => {
     ctx.body = { error: 'parameters missing'}
     return
   }
-
   logger.debug("ctx.request.body.imageData.length: ", imageData.length)
 
   var thumbNail
@@ -36,9 +35,7 @@ exports.addPhoto = async ctx => {
     const createdAt = moment()
     const updatedAt = createdAt
 
-
-
-    // create and safe record
+  // create and safe record
     let photo
     try {
       photo = await Photo.create({
@@ -102,6 +99,8 @@ exports.addPhoto = async ctx => {
         limit,
         offset
       })
+
+      logger.debug("retrived photos: " + photos.length)
 
     } catch(err) {
       logger.error("Unable to retrieve Photos feed", err)

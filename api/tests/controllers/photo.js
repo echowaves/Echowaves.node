@@ -49,7 +49,7 @@ describe('/api/photos', () => {
   it('should not be able to get a photo feed with no parameters',  async ()  => {
     var response =
     await request
-      .get('/api/photos')
+      .post('/api/photos/feed')
       .set('Content-Type', 'application/json')
 
 
@@ -63,7 +63,7 @@ describe('/api/photos', () => {
 
     var response =
     await request
-      .get('/api/photos')
+      .post('/api/photos/feed')
       .set('Content-Type', 'application/json')
       .send({location})
 

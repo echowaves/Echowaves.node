@@ -1,4 +1,6 @@
 import Photo from '../models/photo'
+import AbuseReport from '../models/abuseReport'
+
 import logger from '../../../lib/logger'
 import moment from 'moment'
 import sharp from 'sharp'
@@ -17,6 +19,16 @@ exports.addPhoto = async ctx => {
     return
   }
   logger.debug("ctx.request.body.imageData.length: ", imageData.length)
+
+  var c = await AbuseReport.count({ where: {uuid} })
+  logger.debug("count of abuse: " + c)
+  if(c > 3){
+    ctx.response.status = 401
+    ctx.body = { error: 'Anauthorized.'}
+    return
+  }
+
+
 
   var thumbNail
   try {

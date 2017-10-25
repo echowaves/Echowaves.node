@@ -2,6 +2,7 @@ import Router from 'koa-router'
 
 import indexController from '../src/controllers/index'
 import PhotoController from '../src/controllers/photo'
+import AbuseReportController from '../src/controllers/abuseReport'
 
 require('./passportStrategies')
 
@@ -23,6 +24,9 @@ module.exports = function (app) {
     .post('/api/photos/feed',                  PhotoController.getPhotoFeed)
     .get ('/api/photos/:id',                   PhotoController.getPhotoById)
     .delete('/api/photos/:id',                 PhotoController.deletePhotoById)
+
+    .post('/api/abusereport',                  AbuseReportController.reportAbuse)
+
 
   app.use(router.routes())
 }

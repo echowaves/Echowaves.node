@@ -37,7 +37,7 @@ module.exports = {
   .then(() => queryInterface.addIndex('Photos', ['uuid']))
   .then(() => queryInterface.addIndex('Photos', ['location']))
   .then(() => queryInterface.addIndex('Photos', ['createdAt']))
-  ;
+
 },
 down: function(queryInterface, Sequelize) {
   return queryInterface.dropTable('Photos');

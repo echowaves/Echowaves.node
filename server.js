@@ -23,7 +23,10 @@ dotenv.config()
 export const app = module.exports = new Koa()
 
 // serve static files e.g. bundle.js
-// app.use(serve(path.join(__dirname, 'public')))
+app.use(serve(path.join(__dirname, './public')))
+
+
+
 
 app.use(middleware({
   compiler,

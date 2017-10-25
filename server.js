@@ -26,21 +26,21 @@ export const app = module.exports = new Koa()
 app.use(serve(path.join(__dirname, './public')))
 
 
+// the sectin below turns on the web pack and the react portion, uncomment if needed
 
-
-app.use(middleware({
-  compiler,
-  dev: {
-    stats: {
-      colors: true
-    },
-    hot: true
-  },
-  watchOptions: {
-    poll: true,
-    publicPath: config.output.publicPath,
-  }
-}))
+// app.use(middleware({
+//   compiler,
+//   dev: {
+//     stats: {
+//       colors: true
+//     },
+//     hot: true
+//   },
+//   watchOptions: {
+//     poll: true,
+//     publicPath: config.output.publicPath,
+//   }
+// }))
 
 // Global Error Handler
 app.use(async (ctx, next) => {

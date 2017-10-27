@@ -5,7 +5,7 @@ import logger from '../../../lib/logger'
 import moment from 'moment'
 import sharp from 'sharp'
 import Sequelize from 'sequelize'
-
+import {sequelize} from '../../../consts'
 
 exports.addPhoto = async ctx => {
   const uuid = ctx.request.body.uuid
@@ -27,8 +27,6 @@ exports.addPhoto = async ctx => {
     ctx.body = { error: 'Anauthorized.'}
     return
   }
-
-
 
   var thumbNail
   try {
@@ -180,4 +178,28 @@ exports.addPhoto = async ctx => {
     // Resond to request indicating the photo was created
     ctx.response.status = 200
     ctx.body = { status: 'success' }
+  }
+
+
+
+
+  exports.runCleanup = async ctx => {
+    logger.debug("cleaning up the photos")
+    // cleanup photos
+    let results
+    try {
+        results = await sequelize.query('DELETE FROM \"Photos\" where \"createdAt\" < NOW() - INTERVAL \'4 hours\'')
+
+    } catch(err) {
+      logger.error("Unable to cleanup Photos", err)
+      ctx.response.status = 500
+      ctx.body = { error: 'Unable to cleanup Photos'}
+      return
+    }
+
+    logger.debug("results: " , results)
+
+    // Resond to request indicating the photo was created
+    ctx.response.status = 200
+    ctx.body = { status: 'success', results }
   }

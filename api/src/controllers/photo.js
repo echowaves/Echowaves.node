@@ -188,7 +188,7 @@ exports.addPhoto = async ctx => {
     // cleanup photos
     let results
     try {
-        results = await sequelize.query('DELETE FROM \"Photos\" where \"createdAt\" < NOW() - INTERVAL \'24 hours\'')
+        results = await sequelize.query('DELETE FROM \"Photos\" where \"createdAt\" < NOW() - INTERVAL \'12 hours\'')
 
     } catch(err) {
       logger.error("Unable to cleanup Photos", err)

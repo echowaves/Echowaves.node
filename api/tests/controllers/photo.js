@@ -29,7 +29,7 @@ describe('/api/photos', () => {
   it('should be able to post a photo with right parameters',  async ()  => {
 
     let guid = uuid()
-    var point = { type: 'Point', coordinates: [39.807222,-76.984722]};
+    var point = { type: 'Point', coordinates: [-29.396377, -137.585190]};
     var contents = [...fs.readFileSync('./api/tests/controllers/data/FooBuz.png')]
 
     logger.debug("contents.size: ", contents.length)

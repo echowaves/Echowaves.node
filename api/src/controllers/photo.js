@@ -32,6 +32,7 @@ exports.addPhoto = async ctx => {
   try {
     thumbNail = [...await sharp(new Buffer(imageData))
       .resize(150, 150)
+      .rotate()
       .toBuffer()] // conver to Buffer then babck to Array
     } catch(err) {
       logger.error(err)

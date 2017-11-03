@@ -44,7 +44,7 @@ describe('/api/abusereport', () => {
   it('should not be able to post a photo wben too many abuses reported',  async ()  => {
     let guid = uuid()
 
-    var point = { type: 'Point', coordinates: [39.807222,-76.984722]};
+    var point = { type: 'Point', coordinates: [-29.396377, -137.585190]};
     var contents = [...fs.readFileSync('./api/tests/controllers/data/FooBuz.png')]
 
     logger.debug("contents.size: ", contents.length)

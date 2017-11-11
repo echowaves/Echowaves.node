@@ -31,7 +31,7 @@ exports.addPhoto = async ctx => {
   var thumbNail
   try {
     thumbNail = [...await sharp(new Buffer(imageData))
-      .resize(150, 150)
+      .resize(150, null)
       .rotate()
       .toBuffer()] // conver to Buffer then babck to Array
     } catch(err) {

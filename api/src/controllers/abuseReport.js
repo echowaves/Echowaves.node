@@ -32,7 +32,7 @@ exports.reportAbuse = async ctx => {
     }
 
 
-    // Resond to request indicating the photo was created
+    // Resond to request indicating the aubse report was created
     ctx.response.status = 201
     ctx.body = { status: 'success' }
   }

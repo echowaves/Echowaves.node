@@ -195,7 +195,7 @@ exports.addPhoto = async ctx => {
     } catch(err) {
       logger.error("Unable to cleanup Photos", err)
       ctx.response.status = 500
-      ctx.body = { error: 'Unable to cleanup Photos', err, rowids}
+      ctx.body = { error: 'Unable to cleanup Photos', err}
       return
     }
 
@@ -203,5 +203,5 @@ exports.addPhoto = async ctx => {
 
     // Resond to request indicating the photo was created
     ctx.response.status = 200
-    ctx.body = { status: 'success', results, rowids}
+    ctx.body = { status: 'success', results, rowid: rowids[0][0].id}
   }

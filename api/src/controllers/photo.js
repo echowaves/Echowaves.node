@@ -190,12 +190,12 @@ exports.addPhoto = async ctx => {
     try {
         await sequelize.query('DELETE FROM \"AbuseReports\" where \"createdAt\" < NOW() - INTERVAL \'7 days\'')
         rowids = await sequelize.query('select id from (select id from \"Photos\" order by id desc  limit 100) as r order by id')
-        results = await sequelize.query('DELETE FROM \"Photos\" where \"createdAt\" < NOW() - INTERVAL \'24 hours\' and id < ' + rowids[0])
+        results = await sequelize.query('DELETE FROM \"Photos\" where \"createdAt\" < NOW() - INTERVAL \'24 hours\'')// and id < ' + rowids[0])
 
     } catch(err) {
       logger.error("Unable to cleanup Photos", err)
       ctx.response.status = 500
-      ctx.body = { error: 'Unable to cleanup Photos'}
+      ctx.body = { error: 'Unable to cleanup Photos', err, rowids}
       return
     }
 

@@ -182,15 +182,15 @@ exports.addPhoto = async ctx => {
   }
 
 
-
-
   exports.runCleanup = async ctx => {
     logger.debug("cleaning up the photos")
     // cleanup photos
     let results
+    let rowids
     try {
         await sequelize.query('DELETE FROM \"AbuseReports\" where \"createdAt\" < NOW() - INTERVAL \'7 days\'')
-        results = await sequelize.query('DELETE FROM \"Photos\" where \"createdAt\" < NOW() - INTERVAL \'24 hours\'')
+        rowids = await sequelize.query('select id from (select id from \"Photos\" order by id desc  limit 100) as r order by id')
+        results = await sequelize.query('DELETE FROM \"Photos\" where \"createdAt\" < NOW() - INTERVAL \'24 hours\' and id < ' + rowids[0])
 
     } catch(err) {
       logger.error("Unable to cleanup Photos", err)
@@ -203,5 +203,5 @@ exports.addPhoto = async ctx => {
 
     // Resond to request indicating the photo was created
     ctx.response.status = 200
-    ctx.body = { status: 'success', results }
+    ctx.body = { status: 'success', results, rowid: rowids[0]}
   }

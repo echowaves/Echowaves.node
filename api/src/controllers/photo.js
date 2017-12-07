@@ -173,17 +173,17 @@ exports.addPhoto = async ctx => {
       return
     }
 
-    logger.info("thumb:", photo)
     if(!photo) {
       ctx.response.status = 404
       ctx.body = { error: 'not found' }
       return
     }
+    logger.debug("thumb:", photo)
 
     // Resond to request indicating the photo was created
     ctx.response.status = 200
-    ctx.response.type = "image/png"
-    logger.debug("photo length:", photo.photo.thumbNail.data.length)
+    // ctx.response.type = "image/png"
+    // logger.debug("photo length:", photo.photo.thumbNail.data.length)
     // ctx.body = new Buffer(photo.photo.thumbNail.data, 'binary')
     ctx.body = photo
   }

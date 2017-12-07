@@ -179,20 +179,10 @@ exports.addPhoto = async ctx => {
       ctx.body = { error: 'not found' }
       return
     }
-
-    // logger.debug("thumbNailData:", photo.thumbNail)
-
-    // var thumbNailData = JSON.parse(photo.thumbNail.data)
-
-
-    // logger.debug("thumbNailData:", JSON.stringify(thumbNailData))
-    // logger.debug("thumbNailData length:", thumbNailData.length)
-
     // Resond to request indicating the photo was created
     ctx.response.status = 200
     ctx.response.type = "image/png"
     ctx.body = photo.thumbNail
-    // ctx.body = new Buffer(thumbNailData)
   }
 
 

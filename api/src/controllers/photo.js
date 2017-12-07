@@ -173,6 +173,7 @@ exports.addPhoto = async ctx => {
       return
     }
 
+    log.info("thumb:", photo)
     if(!photo) {
       ctx.response.status = 404
       ctx.body = { error: 'not found' }
@@ -183,7 +184,8 @@ exports.addPhoto = async ctx => {
     ctx.response.status = 200
     ctx.response.type = "image/png"
     log.debug("photo length:", photo.photo.thumbNail.data.length)
-    ctx.body = new Buffer(photo.photo.thumbNail.data, 'binary')
+    // ctx.body = new Buffer(photo.photo.thumbNail.data, 'binary')
+    ctx.body = photo
   }
 
 

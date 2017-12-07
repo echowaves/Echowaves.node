@@ -185,9 +185,9 @@ exports.addPhoto = async ctx => {
     // Resond to request indicating the photo was created
     // ctx.response.status = 200
     // ctx.response.type = "image/png"
-    // ctx.body = new Buffer(photo.thumbNail.data)
+    ctx.body = new Buffer([...photo.thumbNail.data])
     // ctx.body = { data: [...photo.thumbNail.data] }
-    ctx.body = { error: 'not 2 found' }
+    // ctx.body = { error: 'not 2 found' }
 
   }
 

@@ -180,6 +180,8 @@ exports.addPhoto = async ctx => {
       return
     }
 
+    logger.debug("thumbNailData:", photo.thumbNail)
+
     var thumbNailData = JSON.parse(photo.thumbNail.data)
 
 

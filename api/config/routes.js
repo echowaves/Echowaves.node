@@ -24,6 +24,7 @@ module.exports = function (app) {
     .post('/api/photos',                       PhotoController.addPhoto)
     .post('/api/photos/feed',                  PhotoController.getPhotoFeed)
     .get ('/api/photos/:id',                   PhotoController.getPhotoById)
+    .get ('/api/photos/:id/thumb',             PhotoController.getThumbById)
     .delete('/api/photos/:id',                 PhotoController.deletePhotoById)
     .get ('/api/cleanupPhotos',                PhotoController.runCleanup)
 

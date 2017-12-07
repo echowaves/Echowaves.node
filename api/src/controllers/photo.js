@@ -180,8 +180,10 @@ exports.addPhoto = async ctx => {
       return
     }
 
-    var thumbNailData = photo.thumbNail.data
-    logger.debug("thumbNailData:", JSON.stringify(thumbNailData))
+    var thumbNailData = JSON.parse(photo.thumbNail.data)
+
+
+    // logger.debug("thumbNailData:", JSON.stringify(thumbNailData))
     logger.debug("thumbNailData length:", thumbNailData.length)
 
     // Resond to request indicating the photo was created

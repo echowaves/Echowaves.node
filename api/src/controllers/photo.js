@@ -179,11 +179,11 @@ exports.addPhoto = async ctx => {
       return
     }
 
-    logger.debug("photo length:", photo.thumbNail.data.length)
+    // logger.debug("photo length:", photo.thumbNail.data.length)
 
     // Resond to request indicating the photo was created
     ctx.response.status = 200
-    ctx.response.type = "image/png"
+    // ctx.response.type = "image/png"
 
     // ctx.body = new Buffer(photo.thumbNail.data, 'binary')
     ctx.body = photo.thumbNail.data

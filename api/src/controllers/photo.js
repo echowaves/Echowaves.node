@@ -165,7 +165,7 @@ exports.addPhoto = async ctx => {
     try {
         photo = await Photo.findOne({
           where: { id },
-          attributes: ['thumbNail']
+          attributes:  { exclude: ["imageData"] }
         })
     } catch(err) {
       logger.error("Unable to retrieve a Thumb", err)

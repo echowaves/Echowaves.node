@@ -186,8 +186,8 @@ exports.addPhoto = async ctx => {
     ctx.response.status = 200
     // ctx.response.type = "image/png"
 
-    // ctx.body = new Buffer(photo.thumbNail.data, 'binary')
-    ctx.body = { data: photo.thumbNail.data }
+    ctx.body = new Buffer(photo.thumbNail.data, 'binary')
+    // ctx.body = { data: photo.thumbNail.data }
   }
 
 

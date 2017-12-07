@@ -181,8 +181,8 @@ exports.addPhoto = async ctx => {
 
     // Resond to request indicating the photo was created
     ctx.response.status = 200
-    // ctx.response.type = "image/png"
-    ctx.body = new Buffer(photo.photo.thumbNail.data, 'binary')
+    ctx.response.type = "image/png"
+    ctx.response.body = new Buffer(photo.photo.thumbNail.data, 'binary')
   }
 
 

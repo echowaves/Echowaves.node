@@ -180,8 +180,8 @@ exports.addPhoto = async ctx => {
       return
     }
     logger.debug("photo length1:")
-    logger.debug(JSON.stringify(photo.thumbNail))
-    logger.debug("photo length2:" + photo.thumbNail.data.length)
+    logger.debug(JSON.stringify(photo.thumbNail.data))
+    logger.debug(photo.thumbNail.data.length)
 
     // Resond to request indicating the photo was created
     // ctx.response.status = 200

@@ -164,7 +164,8 @@ exports.addPhoto = async ctx => {
     let photo
     try {
         photo = await Photo.findOne({
-          where: { id }
+          where: { id },
+          attributes: ['thumbNail']
         })
     } catch(err) {
       logger.error("Unable to retrieve a Thumb", err)
@@ -186,7 +187,7 @@ exports.addPhoto = async ctx => {
     // ctx.response.type = "image/png"
 
     // ctx.body = new Buffer(photo.thumbNail.data, 'binary')
-    ctx.body = { data: photo.thumbNail }
+    ctx.body = { data: photo }
   }
 
 

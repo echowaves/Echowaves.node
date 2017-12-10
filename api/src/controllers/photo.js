@@ -1,6 +1,9 @@
 import Photo from '../models/photo'
 import AbuseReport from '../models/abuseReport'
 
+import sleep from 'await-sleep'
+
+
 import logger from '../../../lib/logger'
 import moment from 'moment'
 import sharp from 'sharp'
@@ -64,10 +67,11 @@ exports.addPhoto = async ctx => {
       return
     }
 
+    await sleep(10000)
     // Resond to request indicating the photo was created
     ctx.response.status = 201
     ctx.body = { status: 'success' }
-    await sleep(10000)
+
   }
 
 

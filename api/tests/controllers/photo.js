@@ -26,7 +26,7 @@ describe('/api/photos', () => {
   })
 
 
-  it('should be able to post a photo with right parameters',  async ()  => {
+  it.only('should be able to post a photo with right parameters',  async ()  => {
 
     let guid = uuid()
     var point = { type: 'Point', coordinates: [-29.396377, -137.585190]};
@@ -44,6 +44,7 @@ describe('/api/photos', () => {
 
     expect(response.status).to.equal(201)
     expect(response.body.status).to.equal('success')
+    logger.debug(response.body.photo)
   })
 
   it('should not be able to get a photo feed with no parameters',  async ()  => {

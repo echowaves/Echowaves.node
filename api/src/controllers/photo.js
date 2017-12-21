@@ -70,7 +70,7 @@ exports.addPhoto = async ctx => {
     // await sleep(10000)
     // Resond to request indicating the photo was created
     ctx.response.status = 201
-    ctx.body = { status: 'success' }
+    ctx.body = { status: 'success', photo }
 
   }
 

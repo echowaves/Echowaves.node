@@ -43,8 +43,7 @@ describe('/api/photos', () => {
       .send({imageData: contents})
 
     expect(response.status).to.equal(201)
-    expect(response.body.status).to.equal('success')
-    expect(response.body.status).to.equal('success')
+    expect(response.body.status).to.equal('success')    
     expect(response.body.id).to.be.gt(0)
 
   })

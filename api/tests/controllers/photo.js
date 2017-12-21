@@ -44,7 +44,9 @@ describe('/api/photos', () => {
 
     expect(response.status).to.equal(201)
     expect(response.body.status).to.equal('success')
-    logger.debug(response.body.photo)
+    expect(response.body.status).to.equal('success')
+    expect(response.body.id).to.be.gt(0)
+
   })
 
   it('should not be able to get a photo feed with no parameters',  async ()  => {

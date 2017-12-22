@@ -190,6 +190,33 @@ exports.addPhoto = async ctx => {
   }
 
 
+  exports.getFullById = async ctx => {
+    const id = ctx.params.id
+
+    // retrieve photos
+    let photo
+    try {
+        photo = await Photo.findOne({
+          where: { id },
+          attributes:  { exclude: ["thumbNail"] }
+        })
+    } catch(err) {
+      logger.error("Unable to retrieve a Thumb", err)
+      ctx.response.status = 500
+      ctx.body = { error: 'Unable to retrieve a Thumb'}
+      return
+    }
+
+    if(!photo) {
+      ctx.response.status = 404
+      ctx.body = { error: 'not found' }
+      return
+    }
+    // Resond to request indicating the photo was created
+    ctx.response.status = 200
+    ctx.response.type = "image/png"
+    ctx.body = photo.imageData
+  }
 
 
 
